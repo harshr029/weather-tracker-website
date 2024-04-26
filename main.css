@@ -1,0 +1,340 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather sans', serif;
+}
+
+:root {
+    --colorDark1: #112D4E;
+    --colorDark2: #3F72AF;
+    --colorLight1: #DBE2EF;
+    --colorLight2: #F9F7F7;
+}
+
+.wrapper {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
+}
+
+.container {
+    /* if your application is not a single page one i.e scrolling in y is happening and you've used a wrapper with 100vh and main content is present inside a container then avoid giving this container a height as 100vh just gives ht of a single viewport or avoid using margin-block for margin as it is a shorthand for margin-block-start and margin-block-end(the value at which margin the bottom of the element must be from the next element below it or from the bottom border of its parent div)*/
+    width: 50%;
+    color: var(--colorLight2);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 32px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.tab-container {
+    width: 85%;
+    /* max-width: 550px; */
+    margin: auto;
+    margin-top: 4rem;
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab {
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 1.75px;
+    padding: 5px 10px;
+    /* border: 2px solid #3f72af; */
+}
+
+.tab.current-tab {
+    background-color: rgba(219, 226, 239, 0.5);
+    border-radius: 4px;
+    /* border: 3px solid #DBE2EF; */
+}
+
+/* .tab.current if used then specificity will be more(more specific address of the element) to select that element and it will override the same property mentioned in .tab selector only, remember you tried to style .current-tab before .tab with a common property border and .tab overridden this property because in same specificity, the selector that used after the first one will override same properties but when you tried with .tab.current-tab first then .tab was unable to override the border property because .tab.current-tab will hold specificity(0,2,0) which is more than .tab (0,1,0) so selection will be accordingly  */
+
+
+/* UI section styling */
+
+.UI-Container {
+    width: 100%;
+    margin-block: 3rem;
+    /* top and bottom ka margin set karta hai */
+}
+
+/* Grant location Container------------- */
+.grant-location-container {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.grant-location-container h2 {
+    font-size: 1.825rem;
+    margin-block: 2rem 0.725rem;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.grant-location-container p:first-of-type {
+    /* it will give the first element of type specified*/
+    font-weight: 100;
+    text-transform: capitalize;
+    word-spacing: 0.1rem;
+}
+
+/* to get last element of a type use :last-of-type */
+
+.grant-location-container button {
+    all: unset;
+    font-size: 0.85rem;
+    background-color: var(--colorDark2);
+
+    /* border: none; */
+    /* color: white; */
+    /* we can omit those two lines as we don't want default styling of button so we use, it's always written on top as it will unset all properties inherited and written above it*/
+    /* appearance can also be used but not in case of button */
+
+    border-radius: 5px;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 1.5rem;
+}
+
+.grant-location-container.active {
+    display: flex;
+}
+
+
+/* Search form container--------------- */
+.search-container {
+    width: 85%;
+    display: none;
+    align-items: center;
+    margin: auto;
+    margin-block: 0.2rem 2rem;
+    gap: 1rem;
+}
+
+.search-container input {
+    /* appearance: none;  it doesn't work in input and button, what I know so far, read about it */
+    all: unset;
+    width: 90%;
+    /* width: calc(100% - 80px); */
+    padding: 10px 20px;
+    background-color: rgba(219, 226, 239, 0.5);
+    border-radius: 0.725rem;
+}
+
+.search-container input::placeholder {
+    color: white;
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+.search-container input:focus {
+    outline: 3px solid rgba(219, 226, 239, 0.8)
+}
+
+.search-container button {
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: var(--colorDark2);
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.search-container.active {
+    display: flex;
+}
+
+
+/* Weather info container--------------- */
+.weather-info-container {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 0.3rem 0;
+}
+
+.city-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.city-info p {
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.weather-description {
+    margin-block: 1rem;
+    font-size: 1.5rem;
+    font-weight: 100;
+    text-transform: capitalize;
+}
+
+/* to access by custom attribute */
+.weather-info-container p[data-temperature] {
+    font-size: 2.925rem;
+    font-weight: 700;
+}
+
+.general-info {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.1rem;
+    margin-block: 1rem 2rem;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background-color: rgba(219, 226, 239, 0.5);
+    padding: 15px 10px;
+    border-radius: 0.5rem;
+}
+
+.info-card img {
+    height: 50px;
+    width: 50px;
+}
+
+.info-card p.card-heading {
+    font-size: 1.5rem;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+.info-card p.card-value {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.weather-info-container.active {
+    display: flex;
+}
+
+
+/* Loading UI container-------------- */
+.loading-container {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-container img {
+    height: 15rem;
+    width: 15rem;
+    margin-top: -5%;
+}
+
+.loading-container p {
+    margin-top: -3%;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+.loading-container.active {
+    display: flex;
+}
+
+/* Not Found UI container--------------- */
+.not-found-container {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-container p {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+}
+
+.not-found-container.active {
+    display: flex;
+}
+
+
+/* In active class of every element we are just using display:flex so we can make a single .active class, but if the code comes out to be different in diff element's active class then used above would be the method to take */
+
+
+/* Responsivness */
+@media (max-width: 800px) {
+
+    /* width 800px se kam hote hi true */
+    .container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 630px) {
+    .container {
+        width: 100%;
+    }
+
+    .general-info {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .info-card {
+        width: 50%;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .search-container {
+        width: 100%;
+    }
+
+    .tab-container {
+        flex-direction: column;
+    }
+
+    .not-found-container img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .temperature {
+        font-size: 2rem;
+    }
+
+    .info-card p.card-heading {
+        font-size: 1rem;
+    }
+}

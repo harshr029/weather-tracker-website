@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="./main.css">
+    <!-- favicon -->
+    <link rel="icon" href="./images/favicon.ico">
+    <!-- tailwind via cdn -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- top level entity -->
+    <div class="wrapper">
+
+        <!-- content container -->
+        <div class="container">
+            <!-- heading -->
+            <h1>Weather App</h1>
+
+            <!-- tab section -->
+            <section class="tab-container">
+                <div class="tab" data-userWeather>Your Weather</div>
+                <div class="tab" data-searchWeather>Search Weather</div>
+            </section>
+
+            <!--section after tab container; grant location screen, search section, weather information screen acc. to tab -->
+            <section class="UI-Container">
+                <!-- Grant location UI, visible or hidden -->
+                <div class="grant-location-container" data-grantLocationContainer>
+                    <img src="./images/location.png" alt="grant access" height="100px" width="100px" loading="lazy">
+
+                    <h2>grant location access</h2>
+
+                    <p>allow access to get weather information</p>
+
+                    <button data-grantAccess>grant access</button>
+                </div>
+
+                <!-- Search Section, visible or hidden -->
+                <form class="search-container" data-searchForm>
+                    <input name="city" type="text" placeholder="Search for city..." data-searchInput>
+
+                    <button class="search-btn" data-searchBtn>
+                        <img src="./images/search.png" alt="search" width="20px" height="20px" loading="lazy">
+                    </button>
+                </form>
+
+                <!-- Weather Infromation section, visible or hidden -->
+                <div class="weather-info-container" data-weatherInfoContainer>
+
+                    <!-- name section -->
+                    <div class="city-info">
+                        <p data-cityName>City Name</p>
+                        <img src="https://flagcdn.com/144x108/in.png" alt="flag" height="24px" width="36px"
+                            data-countryFlag>
+                    </div>
+
+                    <!-- description -->
+                    <p class="weather-description" data-description>Weather Description</p>
+
+                    <!-- icon -->
+                    <img src="http://openweathermap.org/img/w/01n.png" class="weather-icon" alt="weather" height="80px"
+                        width="80px" data-weatherIcon>
+
+                    <!-- temperature -->
+                    <p class="temperature" data-temperature>Temperature</p>
+
+                    <!-- general information -->
+                    <div class="general-info">
+
+                        <div class="info-card">
+                            <img src="./images/wind.png" alt="wind speed" loading="lazy">
+
+                            <p class="card-heading">windspeed</p>
+
+                            <p class="card-value" data-windspeedValue>xyz m/s</p>
+
+                        </div>
+
+                        <div class="info-card">
+                            <img src="./images/humidity.png" alt="humidity" loading="lazy">
+
+                            <p class="card-heading">humidity</p>
+
+                            <p class="card-value" data-humidityValue>xyz %</p>
+
+                        </div>
+
+                        <div class="info-card">
+                            <img src="./images/cloud.png" alt="clouds" loading="lazy">
+
+                            <p class="card-heading">clouds</p>
+
+                            <p class="card-value" data-cloudsValue>xyz %</p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Loading screen container -->
+                <div class="loading-container" data-loadingContainer>
+                    <img src="./images/loading.gif" alt="loading gif" width="150px" height="150px">
+                    <p>Loading</p>
+                </div>
+
+
+                <!-- city not found container  -->
+                <div class="not-found-container" data-notFoundContainer>
+                    <img src="./images/not-found.png" alt="404 Error" width="250px" height="250px">
+                    <p>city not found</p>
+
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+
+
+    <script src="./scripts.js"></script>
+</body>
+
+</html>
